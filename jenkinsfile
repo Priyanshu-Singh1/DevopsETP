@@ -1,9 +1,10 @@
 pipeline {
     agent any
     
-    // Git repository configuration with webhook trigger
+    // Git repository configuration with polling trigger
+    // For localhost Jenkins, use Poll SCM instead of GitHub webhook
     triggers {
-        githubPush()
+        pollSCM('H/5 * * * *')  // Poll every 5 minutes
     }
     
     options {
